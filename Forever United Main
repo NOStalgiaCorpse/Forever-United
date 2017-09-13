@@ -1,0 +1,128 @@
+### ATTENTION: CHANGE THE NEXT VALUE TO YOUR NEEDS, this is the only file needing edit these value, other configuration files are parametrized ###
+
+# Defining Template used in graph and fixed object monitoring
+## Network Interface to monitor
+template1 wlp3s0
+## Custom Folder
+template2 /root
+## Share Folder
+template3 /share
+
+background yes
+update_interval 1
+
+cpu_avg_samples 1
+net_avg_samples 2
+temperature_unit celsius
+
+double_buffer yes
+no_buffers yes
+text_buffer_size 2048
+override_utf8_locale yes
+use_xft yes
+xftfont caviar dreams:size=8
+xftalpha 0.5
+uppercase yes
+
+gap_x -70
+gap_y 0
+minimum_size 150 500
+maximum_width 350
+
+own_window yes
+own_window_type normal
+own_window_transparent yes
+own_window_argb_visual yes
+own_window_argb_visual yes
+own_window_colour 000000
+own_window_argb_value 0
+own_window_hints undecorated,sticky,skip_taskbar,skip_pager,below
+
+border_inner_margin 0
+border_outer_margin 0
+alignment top_right
+#ximerama_head = 0
+
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders no
+show_graph_range yes
+
+# Red
+color2 CD5C5C
+# White
+color3 FFFFFF
+# Verde
+color4 20B2AA
+# Arancio
+color5 FFA07A
+
+
+#Loading lua script for drawning rings
+#lua_load /root/Documents/Conky Themes/conkycyannet_tar_by_dvdred-daiimlg/CyanNet/seamod_rings.lua
+#lua_draw_hook_post main
+
+## System information using conky capabilities
+
+TEXT
+${color4}┌────────────────────┐
+│${offset 5}${font Monospace:normal:size=8}${color5}  SYSTEM: $nodename${offset 2}${color4}      ├────────────────────┐
+${color4}└────────────────────┘                                                                                     │
+${offset 15}${font Monospace:normal:size=8}${color5}Architecture: ${color4}ARCH 4.12.12-1                           |
+ ${offset 9}                                                                                                ────────┤
+${offset 15}${font Monospace:normal:size=8}${color5}Local Time: ${color4}$time${offset 9}                   ──────┘ │
+${offset 336}
+${offset 24}┌─────────────────────────────────────┘
+# Showing CPU Graph
+${offset 24}│
+#${offset 120}${cpugraph 40,183 666666 666666}${voffset -25}
+ ┌──┴──┐
+┌┤ ${font Monospace:normal:size=8}${color5}CPU${color4} │
+│└─────┘
+│
+├── ${font Ubuntu:normal:size=9}${color2}CPU ${if_existing /sys/class/hwmon/hwmon0/temp1_input}${hwmon 0 temp 1}°C${else}${if_existing /sys/class/hwmon/hwmon1/temp1_input}${hwmon 1 temp 1}°C${else}temp not detected${endif}{else}temp not detected${endif}${if_existing /sys/class/hwmon/hwmon1/temp2_input} -  GPU ${hwmon 1 temp 2}°C${else} - GPU temp not detected${endif}
+# Showing TOP 5 CPU-consumers
+${font Monospace:normal:size=8}${color4}│
+${font Monospace:normal:size=8}${color4}├───────── ${font Monospace:normal:size=8}${color5}${top name 1}
+${color4}│${offset 5}${font Monospace:normal:size=8}${color4}└──────── ${font Monospace:normal:size=8}${color5}${top name 2}
+${color4}│${offset 20}${font Monospace:normal:size=8}${color4}└──────── ${font Monospace:normal:size=8}${color5}${top name 3}
+${color4}│${offset 30}${font Monospace:normal:size=8}${color4}└──────── ${font Monospace:normal:size=8}${color5}${top name 4}
+${color4}│${offset 40}${font Monospace:normal:size=8}${color4}└──────── ${font Monospace:normal:size=8}${color5}${top name 5}
+${color4}└─────────┐
+#Showing memory part with TOP 5
+       ┌─────┐
+${offset 30}┌┬┤${offset 7}${font Monospace:normal:size=8}${color5}MEM${color4}${offset 5}|
+     ││└─────┘
+     ││
+${color4}${offset 30}│└──────── ${font Monospace:normal:size=8}${color5}${top_mem name 1}
+${color4}${offset 30}│  └──────── ${font Monospace:normal:size=8}${color5}${top_mem name 2}
+${color4}${offset 30}│    └──────── ${font Monospace:normal:size=8}${color5}${top_mem name 3}
+${color4}${offset 30}│      └──────── ${font Monospace:normal:size=8}${color5}${top_mem name 4}
+${color4}${offset 30}│        └──────── ${font Monospace:normal:size=8}${color5}${top_mem name 4}
+${color4}     │
+${color4}     │    ┌────────────────────┐
+${color4}${offset 30}└────┤ ${color5}  Forever United  ${color4}${offset 6}│
+${color4}          └─────────┬──────────┘
+${color4}                    │
+${color4}┌─────────────────────────────────────────┐
+${color4}│${color2} Cyanide, powerslide${color4} ${offset 120}│
+${color4}│${color2} I'm on cell towers and powerlines${color4}${offset 42}│
+${color4}│${color2} Battery life I'm alkaline${color4} ${offset 84}│
+${color4}│${color2} I sleep 12 hours in half the time${color4}${offset 18}    │
+${color4}│${color2} Breathing polluted air${color4}${offset 66}       │
+${color4}│${color2} I hide my face behind plastic hair ${color4}${offset 24} │
+${color4}│${color2} Acid raindrops on a pink Moncler ${color4}${offset 42}│
+${color4}│${color2} Got a PowerBook G5 full of spyware${color4}${offset 30} │
+${color4}│${color2} Close your blinds and go back to sleep.${color4} │
+${color4}│${color2} I don’t believe in reality${color4}              │
+${color4}│${color2} Close your eyes and come back to me${color4}     │
+${color4}│${color2} I'll take his life like an RPG${color4}          │
+${color4}│${color2} Reality check, electronic cigarette${color4}     │
+${color4}│${color2} Once you taught me how to feel baby${color4}     │
+${color4}│${color2} How could I forget?${color4}                     │
+${color4}│${color2} When the sun went down${color4}                  │
+${color4}│${color2} it never came up${color4}                        │
+${color4}│${color2} If I go to sleep now${color4}                    │
+${color4}│${color2} I will never wake up.${color4}                   │
+${color4}└─────────────────────────────────────────┘
